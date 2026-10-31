@@ -1,0 +1,10 @@
+{
+  "name": "lights-out-matrix",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/serve.mjs"
+  }
+}
