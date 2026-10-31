@@ -55,7 +55,8 @@
       <details class="panel trace-panel" id="elimination-panel" open>
         <summary class="trace-summary"><span><span class="step">03 / GAUSSIAN ELIMINATION</span><h2>高斯消元计算过程 <span class="math">[A | b]</span></h2></span><span class="trace-disclosure" aria-hidden="true">−</span></summary>
         <div class="trace-body">
-          <p class="panel-description">对增广矩阵同时做行变换。绿色 = 1，红色 = 0；黄色框标出当前主元列和参与运算的行。</p>
+          <p class="panel-description">先消左下部分，得到上三角形式；再消右上部分，得到行最简形式。绿色 = 1，红色 = 0；黄色框标出主元列和参与运算的行。</p>
+          <p id="trace-phase" class="trace-phase" data-phase="lower">第一阶段 · 消左下部分</p>
           <div class="xor-rule"><span>模 2 加法就是异或 ⊕</span><code>0 ⊕ 0 = 0</code><code>0 ⊕ 1 = 1</code><code>1 ⊕ 0 = 1</code><code>1 ⊕ 1 = 0</code></div>
           <div class="trace-controls" aria-label="消元过程控制"><button id="trace-first" type="button">初始矩阵</button><button id="trace-prev" type="button">← 上一步</button><button id="trace-next" class="primary" type="button">下一步 →</button><button id="trace-last" type="button">最后一步</button><button id="trace-play" type="button" aria-pressed="false">自动播放</button><output id="trace-progress" aria-live="polite">第 0 步</output></div>
           <label class="trace-scrubber" for="trace-position"><span>步骤进度</span><input id="trace-position" type="range" min="0" max="0" value="0"><span id="trace-total">0 步</span></label>

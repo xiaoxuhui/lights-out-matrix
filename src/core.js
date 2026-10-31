@@ -49,20 +49,33 @@
       let pivot = rank;
       while (pivot < m && !bit(rows[pivot], col)) pivot++;
       if (pivot === m) {
-        if (steps) steps.push({ type: 'free', column: col });
+        if (steps) steps.push({ type: 'free', column: col, phase: 'lower' });
         continue;
       }
-      if (steps && pivot !== rank) steps.push({ type: 'swap', source: pivot, target: rank, column: col });
+      if (steps && pivot !== rank) steps.push({ type: 'swap', source: pivot, target: rank, column: col, phase: 'lower' });
       [rows[rank], rows[pivot]] = [rows[pivot], rows[rank]];
-      if (steps) steps.push({ type: 'pivot', row: rank, column: col });
-      for (let row = 0; row < m; row++) {
-        if (row !== rank && bit(rows[row], col)) {
-          if (steps) steps.push({ type: 'xor', source: rank, target: row, column: col });
+      if (steps) steps.push({ type: 'pivot', row: rank, column: col, phase: 'lower' });
+      // Forward phase: eliminate only below each pivot.
+      for (let row = rank + 1; row < m; row++) {
+        if (bit(rows[row], col)) {
+          if (steps) steps.push({ type: 'xor', source: rank, target: row, column: col, phase: 'lower' });
           for (let w = col >>> 5; w < words; w++) rows[row][w] ^= rows[rank][w];
         }
       }
       pivots.push(col);
       rank++;
+    }
+    // Only after all forward columns: eliminate above pivots, right to left.
+    if (steps) steps.push({ type: 'phase', phase: 'upper' });
+    for (let pivotRow = pivots.length - 1; pivotRow >= 0; pivotRow--) {
+      const col = pivots[pivotRow];
+      if (steps) steps.push({ type: 'pivot', row: pivotRow, column: col, phase: 'upper' });
+      for (let row = 0; row < pivotRow; row++) {
+        if (bit(rows[row], col)) {
+          if (steps) steps.push({ type: 'xor', source: pivotRow, target: row, column: col, phase: 'upper' });
+          for (let w = col >>> 5; w < words; w++) rows[row][w] ^= rows[pivotRow][w];
+        }
+      }
     }
     const metadata = { rank, nullity: m - rank, pivots, ...(steps ? { steps } : {}) };
     for (let row = rank; row < m; row++) {

@@ -10,13 +10,17 @@
       $('trace-play').textContent = '自动播放'; $('trace-play').setAttribute('aria-pressed', 'false');
     }
     function describe(step) {
+      if (step.type === 'phase') return {
+        title: '左下消元完成，开始消右上部分',
+        description: '所有系数列已检查完毕，各主元下方已经是 0。现在从最后一个主元向前，逐个消掉主元上方的 1；不再进行前向换行。'
+      };
       if (step.type === 'swap') return {
         title: `R${step.target + 1} ↔ R${step.source + 1}`,
         description: `第 ${step.column + 1} 列需要一个值为 1 的主元。交换第 ${step.target + 1} 行和第 ${step.source + 1} 行，整行连同常数列一起交换。`
       };
       if (step.type === 'pivot') return {
-        title: `选主元：第 ${step.row + 1} 行，第 ${step.column + 1} 列`,
-        description: `这个位置的数值为 1。以 R${step.row + 1} 为主元行，将这一列其他行的 1 消成 0。模 2 下不需要除法。`
+        title: `${step.phase === 'upper' ? '反向处理主元' : '选主元'}：第 ${step.row + 1} 行，第 ${step.column + 1} 列`,
+        description: `这个位置的数值为 1。以 R${step.row + 1} 为主元行，${step.phase === 'upper' ? '只消去这一列主元上方的 1，从最后一个主元向前处理' : '只消去这一列主元下方的 1，上方保留到第二阶段处理'}。模 2 下不需要除法。`
       };
       if (step.type === 'free') return {
         title: `第 ${step.column + 1} 列无新主元，跳过本列`,
@@ -24,7 +28,7 @@
       };
       return {
         title: `R${step.target + 1} ← R${step.target + 1} ⊕ R${step.source + 1}`,
-        description: `把第 ${step.source + 1} 行逐项异或到第 ${step.target + 1} 行，包含常数列。第 ${step.column + 1} 列原来的 1 变为 1 ⊕ 1 = 0，完成一次消去。`
+        description: `${step.phase === 'upper' ? '消右上部分' : '消左下部分'}：把第 ${step.source + 1} 行逐项异或到第 ${step.target + 1} 行，包含常数列。第 ${step.column + 1} 列原来的 1 变为 1 ⊕ 1 = 0。`
       };
     }
     function conclusion() {
@@ -73,7 +77,7 @@
       ctx.fillText('b', xAt(m) + cell / 2, cell >= 12 ? 12 : 7);
       ctx.fillStyle = '#23362f'; ctx.fillRect(left + m * cell + Math.floor(divider / 2) - 1, top - 2, 2, m * cell + 2);
       const step = cursor ? result.steps[cursor - 1] : null;
-      if (step) {
+      if (step && step.type !== 'phase') {
         ctx.strokeStyle = '#e5b32d'; ctx.lineWidth = 2;
         ctx.strokeRect(xAt(step.column) + .5, top + .5, Math.max(1, cell - 2), Math.max(1, m * cell - 2));
         const activeRows = step.type === 'pivot' ? [step.row] : step.type === 'free' ? [] : [step.source, step.target];
@@ -90,10 +94,13 @@
       const total = result.steps.length, end = cursor === total;
       const current = cursor ? describe(result.steps[cursor - 1]) : {
         title: '初始增广矩阵 [A | b]',
-        description: `左侧 ${board.length} 列是操作矩阵 A，右侧是初始灯光 b。每一行表示一个格子的熄灯方程，现在开始逐列选取主元。`
+        description: `左侧 ${board.length} 列是操作矩阵 A，右侧是初始灯光 b。先从左到右，只消主元下方的 1；完成左下消元后，再从最后一个主元向前消右上部分。`
       };
       $('trace-step-title').textContent = current.title;
       $('trace-step-description').textContent = current.description;
+      const phase = cursor && result.steps[cursor - 1].phase === 'upper' ? 'upper' : 'lower';
+      $('trace-phase').textContent = phase === 'upper' ? '第二阶段 · 消右上部分' : '第一阶段 · 消左下部分';
+      $('trace-phase').dataset.phase = phase;
       $('trace-progress').textContent = `第 ${cursor} / ${total} 步`;
       $('trace-position').value = cursor;
       $('trace-first').disabled = cursor === 0; $('trace-prev').disabled = cursor === 0;
@@ -142,9 +149,9 @@
     panel.addEventListener('toggle', () => { if (panel.open) { ensureTrace(); render(); } else pause(); });
     $('trace-transcript').addEventListener('toggle', () => {
       if (!$('trace-transcript').open || !result) return;
-      const lines = ['求解 A·x=b（模 2）。初始增广矩阵 [A | b]。', '异或规则：0⊕0=0；0⊕1=1；1⊕0=1；1⊕1=0。', ''];
+      const lines = ['求解 A·x=b（模 2）。初始增广矩阵 [A | b]。', '顺序：先消左下部分，前向消元全部完成后，再消右上部分。', '异或规则：0⊕0=0；0⊕1=1；1⊕0=1；1⊕1=0。', ''];
       result.steps.forEach((step, i) => {
-        const description = describe(step); lines.push(`${i + 1}. ${description.title}\n   ${description.description}`);
+        const description = describe(step); lines.push(`${i + 1}. [${step.phase === 'upper' ? '第二阶段' : '第一阶段'}] ${description.title}\n   ${description.description}`);
       });
       const finish = conclusion();
       lines.push('', finish.title, finish.text, finish.answer);

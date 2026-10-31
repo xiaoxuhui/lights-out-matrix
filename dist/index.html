@@ -11,6 +11,7 @@
 @media(min-width:1000px){.input-panel,.result-panel{padding:26px 32px}}@media(max-width:760px){.shell{padding:0 20px}.masthead{height:68px}.brand-en{display:none}.intro{padding:32px 0 26px}.intro h1{font-size:32px}.equation{font-size:33px;gap:8px;padding-left:15px}.equation .operator{font-size:25px}.equation small{font-size:9px}.subtitle{font-size:12px}.control-bar{gap:15px;align-items:flex-start}.view-control{width:100%;justify-content:space-between}.workspace{grid-template-columns:1fr;gap:18px}.panel{padding:22px}.board{width:min(100%,330px)}.matrix-panel{margin-top:18px}.matrix-header{align-items:flex-start;flex-direction:column;gap:16px}.matrix-description{align-items:flex-start}.matrix-description .legend{flex-shrink:0;gap:8px}.matrix-layout{grid-template-columns:1fr;gap:20px}.matrix-scroll{max-height:440px;padding:10px}.matrix-aside{border-left:0;border-top:1px solid var(--line);padding:18px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:0 18px}.matrix-aside .step,.matrix-aside h3,.matrix-aside p{display:none}.matrix-stat{border-top:0;padding:0}.matrix-stat strong{font-size:16px}footer{font-size:9px;flex-wrap:wrap;gap:10px}}@media(max-width:420px){.shell{padding:0 14px}.equation{display:none}.intro h1{font-size:31px}.control-bar #size-form{gap:8px;font-size:12px}#size-form .muted{display:none}.panel{padding:18px}.board-foot{font-size:9px}.matrix-description{flex-direction:column;gap:8px}.board-actions button{padding:8px 13px}.field-tag{font-size:9px;letter-spacing:.5px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 +.trace-panel{margin-top:24px}.trace-summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px}.trace-summary::-webkit-details-marker{display:none}.trace-disclosure{font-size:25px;font-weight:300;color:var(--muted)}.trace-panel:not([open]) .trace-disclosure{font-size:0}.trace-panel:not([open]) .trace-disclosure:after{content:'+';font-size:25px}.trace-body{padding-top:4px}.xor-rule{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 14px;border:1px solid var(--line);border-radius:6px;background:var(--paper);font-size:11px;color:var(--muted)}.xor-rule code{font:12px Consolas,monospace;color:var(--ink);white-space:nowrap}.trace-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:20px 0 10px}.trace-controls button{font-size:12px;padding:8px 12px}.trace-controls output{font:12px Consolas,monospace;color:var(--muted);margin-left:auto}.trace-scrubber{display:flex;align-items:center;gap:12px;font-size:11px;color:var(--muted);margin-bottom:20px}.trace-scrubber input{flex:1;width:100%;min-width:40px}.trace-scrubber span{white-space:nowrap}.trace-stage{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:28px}.trace-stage>div{min-width:0}.trace-matrix-label{display:flex;align-items:center;justify-content:space-between;gap:12px;font:11px Consolas,monospace;color:var(--muted);margin-bottom:10px}.trace-scroll{max-height:530px;padding:9px;background:#faf9f2}.trace-explanation{border-left:1px solid var(--line);padding:28px 0 0 25px;overflow-wrap:anywhere}.trace-explanation h3{font-size:18px;font-weight:600;line-height:1.6;margin:14px 0 10px}.trace-explanation p{font-size:12px;color:var(--muted);line-height:1.95}.trace-constant-note{border-top:1px solid var(--line);padding-top:14px}.trace-explanation #trace-finish{border-top:1px solid var(--line);margin-top:20px;padding-top:5px}.trace-explanation #trace-finish h3{color:var(--accent)}.trace-answer{font-family:Consolas,"Microsoft YaHei",monospace;background:var(--soft);padding:12px;border-radius:5px}.trace-transcript{border-top:1px solid var(--line);margin-top:20px;padding-top:14px}.trace-transcript summary{font-size:12px;cursor:pointer;color:var(--accent);padding:4px 0}.trace-transcript pre{font:12px/1.9 Consolas,"Microsoft YaHei",monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:300px;overflow:auto;padding:15px;background:var(--paper);border-radius:6px}.trace-summary:focus-visible{outline:3px solid #a67928;outline-offset:5px}@media(max-width:900px){.trace-stage{grid-template-columns:1fr}.trace-explanation{border-left:0;border-top:1px solid var(--line);padding:18px 0 0}.trace-explanation h3{margin-top:8px}.trace-matrix-label{flex-wrap:wrap}.trace-controls output{margin-left:0}.trace-scroll{max-height:420px}}@media(max-width:420px){.trace-controls{gap:7px}.trace-controls button{padding:8px 9px;font-size:11px}.xor-rule{gap:9px 12px}.xor-rule>span{width:100%}.trace-summary h2{font-size:18px}.trace-summary .math{font-size:20px}}
+.trace-phase{display:inline-block;margin:0 0 14px;padding:7px 11px;border-radius:5px;border:1px solid #cddbc5;background:#edf3e8;color:#35613e;font-size:12px}.trace-phase[data-phase="upper"]{border-color:#d7d2b3;background:#f5f0de;color:#796329}
 
 </style>
 </head>
@@ -62,7 +63,8 @@
       <details class="panel trace-panel" id="elimination-panel" open>
         <summary class="trace-summary"><span><span class="step">03 / GAUSSIAN ELIMINATION</span><h2>高斯消元计算过程 <span class="math">[A | b]</span></h2></span><span class="trace-disclosure" aria-hidden="true">−</span></summary>
         <div class="trace-body">
-          <p class="panel-description">对增广矩阵同时做行变换。绿色 = 1，红色 = 0；黄色框标出当前主元列和参与运算的行。</p>
+          <p class="panel-description">先消左下部分，得到上三角形式；再消右上部分，得到行最简形式。绿色 = 1，红色 = 0；黄色框标出主元列和参与运算的行。</p>
+          <p id="trace-phase" class="trace-phase" data-phase="lower">第一阶段 · 消左下部分</p>
           <div class="xor-rule"><span>模 2 加法就是异或 ⊕</span><code>0 ⊕ 0 = 0</code><code>0 ⊕ 1 = 1</code><code>1 ⊕ 0 = 1</code><code>1 ⊕ 1 = 0</code></div>
           <div class="trace-controls" aria-label="消元过程控制"><button id="trace-first" type="button">初始矩阵</button><button id="trace-prev" type="button">← 上一步</button><button id="trace-next" class="primary" type="button">下一步 →</button><button id="trace-last" type="button">最后一步</button><button id="trace-play" type="button" aria-pressed="false">自动播放</button><output id="trace-progress" aria-live="polite">第 0 步</output></div>
           <label class="trace-scrubber" for="trace-position"><span>步骤进度</span><input id="trace-position" type="range" min="0" max="0" value="0"><span id="trace-total">0 步</span></label>
@@ -134,20 +136,33 @@
       let pivot = rank;
       while (pivot < m && !bit(rows[pivot], col)) pivot++;
       if (pivot === m) {
-        if (steps) steps.push({ type: 'free', column: col });
+        if (steps) steps.push({ type: 'free', column: col, phase: 'lower' });
         continue;
       }
-      if (steps && pivot !== rank) steps.push({ type: 'swap', source: pivot, target: rank, column: col });
+      if (steps && pivot !== rank) steps.push({ type: 'swap', source: pivot, target: rank, column: col, phase: 'lower' });
       [rows[rank], rows[pivot]] = [rows[pivot], rows[rank]];
-      if (steps) steps.push({ type: 'pivot', row: rank, column: col });
-      for (let row = 0; row < m; row++) {
-        if (row !== rank && bit(rows[row], col)) {
-          if (steps) steps.push({ type: 'xor', source: rank, target: row, column: col });
+      if (steps) steps.push({ type: 'pivot', row: rank, column: col, phase: 'lower' });
+      // Forward phase: eliminate only below each pivot.
+      for (let row = rank + 1; row < m; row++) {
+        if (bit(rows[row], col)) {
+          if (steps) steps.push({ type: 'xor', source: rank, target: row, column: col, phase: 'lower' });
           for (let w = col >>> 5; w < words; w++) rows[row][w] ^= rows[rank][w];
         }
       }
       pivots.push(col);
       rank++;
+    }
+    // Only after all forward columns: eliminate above pivots, right to left.
+    if (steps) steps.push({ type: 'phase', phase: 'upper' });
+    for (let pivotRow = pivots.length - 1; pivotRow >= 0; pivotRow--) {
+      const col = pivots[pivotRow];
+      if (steps) steps.push({ type: 'pivot', row: pivotRow, column: col, phase: 'upper' });
+      for (let row = 0; row < pivotRow; row++) {
+        if (bit(rows[row], col)) {
+          if (steps) steps.push({ type: 'xor', source: pivotRow, target: row, column: col, phase: 'upper' });
+          for (let w = col >>> 5; w < words; w++) rows[row][w] ^= rows[pivotRow][w];
+        }
+      }
     }
     const metadata = { rank, nullity: m - rank, pivots, ...(steps ? { steps } : {}) };
     for (let row = rank; row < m; row++) {
@@ -202,13 +217,17 @@
       $('trace-play').textContent = '自动播放'; $('trace-play').setAttribute('aria-pressed', 'false');
     }
     function describe(step) {
+      if (step.type === 'phase') return {
+        title: '左下消元完成，开始消右上部分',
+        description: '所有系数列已检查完毕，各主元下方已经是 0。现在从最后一个主元向前，逐个消掉主元上方的 1；不再进行前向换行。'
+      };
       if (step.type === 'swap') return {
         title: `R${step.target + 1} ↔ R${step.source + 1}`,
         description: `第 ${step.column + 1} 列需要一个值为 1 的主元。交换第 ${step.target + 1} 行和第 ${step.source + 1} 行，整行连同常数列一起交换。`
       };
       if (step.type === 'pivot') return {
-        title: `选主元：第 ${step.row + 1} 行，第 ${step.column + 1} 列`,
-        description: `这个位置的数值为 1。以 R${step.row + 1} 为主元行，将这一列其他行的 1 消成 0。模 2 下不需要除法。`
+        title: `${step.phase === 'upper' ? '反向处理主元' : '选主元'}：第 ${step.row + 1} 行，第 ${step.column + 1} 列`,
+        description: `这个位置的数值为 1。以 R${step.row + 1} 为主元行，${step.phase === 'upper' ? '只消去这一列主元上方的 1，从最后一个主元向前处理' : '只消去这一列主元下方的 1，上方保留到第二阶段处理'}。模 2 下不需要除法。`
       };
       if (step.type === 'free') return {
         title: `第 ${step.column + 1} 列无新主元，跳过本列`,
@@ -216,7 +235,7 @@
       };
       return {
         title: `R${step.target + 1} ← R${step.target + 1} ⊕ R${step.source + 1}`,
-        description: `把第 ${step.source + 1} 行逐项异或到第 ${step.target + 1} 行，包含常数列。第 ${step.column + 1} 列原来的 1 变为 1 ⊕ 1 = 0，完成一次消去。`
+        description: `${step.phase === 'upper' ? '消右上部分' : '消左下部分'}：把第 ${step.source + 1} 行逐项异或到第 ${step.target + 1} 行，包含常数列。第 ${step.column + 1} 列原来的 1 变为 1 ⊕ 1 = 0。`
       };
     }
     function conclusion() {
@@ -265,7 +284,7 @@
       ctx.fillText('b', xAt(m) + cell / 2, cell >= 12 ? 12 : 7);
       ctx.fillStyle = '#23362f'; ctx.fillRect(left + m * cell + Math.floor(divider / 2) - 1, top - 2, 2, m * cell + 2);
       const step = cursor ? result.steps[cursor - 1] : null;
-      if (step) {
+      if (step && step.type !== 'phase') {
         ctx.strokeStyle = '#e5b32d'; ctx.lineWidth = 2;
         ctx.strokeRect(xAt(step.column) + .5, top + .5, Math.max(1, cell - 2), Math.max(1, m * cell - 2));
         const activeRows = step.type === 'pivot' ? [step.row] : step.type === 'free' ? [] : [step.source, step.target];
@@ -282,10 +301,13 @@
       const total = result.steps.length, end = cursor === total;
       const current = cursor ? describe(result.steps[cursor - 1]) : {
         title: '初始增广矩阵 [A | b]',
-        description: `左侧 ${board.length} 列是操作矩阵 A，右侧是初始灯光 b。每一行表示一个格子的熄灯方程，现在开始逐列选取主元。`
+        description: `左侧 ${board.length} 列是操作矩阵 A，右侧是初始灯光 b。先从左到右，只消主元下方的 1；完成左下消元后，再从最后一个主元向前消右上部分。`
       };
       $('trace-step-title').textContent = current.title;
       $('trace-step-description').textContent = current.description;
+      const phase = cursor && result.steps[cursor - 1].phase === 'upper' ? 'upper' : 'lower';
+      $('trace-phase').textContent = phase === 'upper' ? '第二阶段 · 消右上部分' : '第一阶段 · 消左下部分';
+      $('trace-phase').dataset.phase = phase;
       $('trace-progress').textContent = `第 ${cursor} / ${total} 步`;
       $('trace-position').value = cursor;
       $('trace-first').disabled = cursor === 0; $('trace-prev').disabled = cursor === 0;
@@ -334,9 +356,9 @@
     panel.addEventListener('toggle', () => { if (panel.open) { ensureTrace(); render(); } else pause(); });
     $('trace-transcript').addEventListener('toggle', () => {
       if (!$('trace-transcript').open || !result) return;
-      const lines = ['求解 A·x=b（模 2）。初始增广矩阵 [A | b]。', '异或规则：0⊕0=0；0⊕1=1；1⊕0=1；1⊕1=0。', ''];
+      const lines = ['求解 A·x=b（模 2）。初始增广矩阵 [A | b]。', '顺序：先消左下部分，前向消元全部完成后，再消右上部分。', '异或规则：0⊕0=0；0⊕1=1；1⊕0=1；1⊕1=0。', ''];
       result.steps.forEach((step, i) => {
-        const description = describe(step); lines.push(`${i + 1}. ${description.title}\n   ${description.description}`);
+        const description = describe(step); lines.push(`${i + 1}. [${step.phase === 'upper' ? '第二阶段' : '第一阶段'}] ${description.title}\n   ${description.description}`);
       });
       const finish = conclusion();
       lines.push('', finish.title, finish.text, finish.answer);

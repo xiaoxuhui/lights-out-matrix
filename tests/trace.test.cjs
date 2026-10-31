@@ -77,7 +77,29 @@ test('a missing pivot in a middle column does not stop later elimination', () =>
 });
 test('a zero first column still allows pivots in all later columns', () => {
   const result = solveGF2([[0, 1, 0], [0, 0, 1], [0, 1, 1]], [1, 1, 0], { recordSteps: true });
-  assert.deepEqual(result.steps[0], { type: 'free', column: 0 });
+  assert.deepEqual(result.steps[0], { type: 'free', column: 0, phase: 'lower' });
   assert.deepEqual(result.pivots, [1, 2]);
   assert.deepEqual(Array.from(result.solution), [0, 1, 1]);
+});
+test('all lower-triangle elimination finishes before any upper-triangle operation', () => {
+  for (let n = 1; n <= 9; n++) {
+    const a = createOperationMatrix(n), b = Array(n * n).fill(1);
+    const result = solveGF2(a, b, { recordSteps: true }), rows = createAugmentedMatrix(a, b);
+    let upperStarted = false, boundaryCount = 0;
+    for (const step of result.steps) {
+      if (step.type === 'phase') {
+        upperStarted = true; boundaryCount++;
+        result.pivots.forEach((col, row) => {
+          for (let r = row + 1; r < rows.length; r++) assert.equal(rows[r][col], 0, `n=${n}, forward phase unfinished`);
+        });
+      }
+      assert.equal(step.phase, upperStarted ? 'upper' : 'lower');
+      if (step.type === 'xor') assert.equal(step.target > step.source, !upperStarted);
+      if (step.type === 'swap') assert.equal(upperStarted, false);
+      applyEliminationStep(rows, step);
+    }
+    assert.equal(boundaryCount, 1);
+    const backwardColumns = result.steps.filter(step => step.type === 'pivot' && step.phase === 'upper').map(step => step.column);
+    assert.deepEqual(backwardColumns, result.pivots.toReversed());
+  }
 });
