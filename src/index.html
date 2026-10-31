@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ee">
+  <title>熄灯矩阵 · Lights Out</title>
+  <!-- APP_STYLE -->
+</head>
+<body>
+  <div class="shell">
+    <header class="masthead">
+      <a class="brand" href="#"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span> 数学实验室 <span class="brand-en">/ MATRIX LAB</span></a>
+      <span class="field-tag">GF(2) · 模 2 运算</span>
+    </header>
+    <main>
+      <section class="intro">
+        <div><p class="eyebrow">LIGHTS OUT / 01</p><h1>把亮灯，化成解。</h1><p class="subtitle">设定灯光，用模 2 高斯消元找到一组全灭方案。</p></div>
+        <div class="equation" aria-label="A 乘 x 等于 b，模 2"><span>A</span><span class="operator">·</span><span>x</span><span class="operator">=</span><span>b</span><small>mod 2</small></div>
+      </section>
+
+      <section class="control-bar" aria-label="棋盘与显示设置">
+        <form id="size-form" novalidate>
+          <label for="size">棋盘边长 <span class="math">n</span></label>
+          <input id="size" name="size" type="number" min="1" max="20" step="1" value="5" inputmode="numeric" aria-describedby="size-hint size-error">
+          <button class="primary" type="submit">生成棋盘 <span aria-hidden="true">↗</span></button>
+          <span id="size-hint" class="muted">1–20</span>
+        </form>
+        <div class="view-control"><label for="display-mode">显示内容</label><select id="display-mode"><option value="both">全部显示</option><option value="matrix">只显示操作矩阵</option><option value="result">只显示结果</option><option value="none">都不显示</option></select></div>
+        <p id="size-error" class="form-error" role="alert" hidden></p>
+      </section>
+
+      <div class="workspace" id="workspace">
+        <section class="panel input-panel" aria-labelledby="input-title">
+          <div class="panel-top"><div><span class="step">01 / INPUT</span><h2 id="input-title">初始灯光 <span class="math">b</span></h2></div><span id="board-dimension" class="dimension">5 × 5</span></div>
+          <p class="panel-description">点击格子切换亮灭，结果会自动更新。</p>
+          <div class="legend"><span><i class="swatch green"></i>亮 · 1</span><span><i class="swatch red"></i>灭 · 0</span></div>
+          <div id="input-board" class="board" role="group" aria-label="初始灯光棋盘"></div>
+          <div class="board-actions"><button id="all-on" type="button">全亮</button><button id="all-off" type="button">全灭</button><button id="example" type="button">载入示例 <span aria-hidden="true">↗</span></button></div>
+          <p class="board-foot"><span id="on-count">0 盏亮灯</span><span>自身 + 上下左右 · 边界不环绕</span></p>
+        </section>
+
+        <section class="panel result-panel" id="result-panel" aria-labelledby="result-title">
+          <div class="panel-top"><div><span class="step">02 / SOLUTION</span><h2 id="result-title">点击方案 <span class="math">x</span></h2></div><span id="solution-badge" class="badge">可解</span></div>
+          <p class="panel-description">按绿色格子各一次，红色格子不用按。</p>
+          <div class="legend"><span><i class="swatch green"></i>按一次 · 1</span><span><i class="swatch red"></i>不按 · 0</span></div>
+          <div id="output-board" class="board output-board" role="group" aria-label="求解点击方案"></div>
+          <div id="no-solution" class="no-solution" hidden><span aria-hidden="true">∅</span><h3>这个灯光状态无解</h3><p>在当前翻转规则下，无法通过点击使所有灯熄灭。试着修改输入棋盘。</p></div>
+          <div class="solution-actions"><p id="solution-summary" role="status" aria-live="polite"></p><button id="verify" class="primary" type="button">验证方案 <span aria-hidden="true">✓</span></button></div>
+          <p id="solution-note" class="small-note"></p>
+          <div id="verification" class="verification" role="status" hidden></div>
+        </section>
+      </div>
+
+      <section class="panel matrix-panel" id="matrix-panel" aria-labelledby="matrix-title">
+        <div class="matrix-header"><div><span class="step">03 / OPERATION MATRIX</span><h2 id="matrix-title">操作矩阵 <span class="math">A</span><span class="dimension" id="matrix-dimension">25 × 25</span></h2></div><div class="matrix-tools"><label for="zoom">格子大小</label><input id="zoom" type="range" min="1" max="28" value="18"><output id="zoom-label" for="zoom">18 px</output></div></div>
+        <div class="matrix-description"><p>列 = 点击的格子 j；行 = 受影响的格子 i。绿色表示会翻转，红色表示不影响。</p><div class="legend"><span><i class="swatch green"></i>1</span><span><i class="swatch red"></i>0</span></div></div>
+        <div class="matrix-layout"><div class="matrix-scroll" id="matrix-scroll"><canvas id="matrix-canvas" tabindex="0" role="img" aria-label="操作矩阵；可用方向键查询单元格" aria-describedby="matrix-inspect"></canvas></div><aside class="matrix-aside"><span class="step">READ THE MATRIX</span><h3>一次点击，<br>对应一列。</h3><p>按从左到右、从上到下的顺序给棋盘格编号 1 到 n²。</p><p>每个格子影响自身及相邻格，所以每列最多有 5 个 1。</p><div class="matrix-stat"><span>矩阵大小</span><strong id="matrix-stat-size">25 × 25</strong></div><div class="matrix-stat"><span>秩 / 自由变量</span><strong id="rank-stat">—</strong></div></aside></div>
+        <p id="matrix-inspect" class="matrix-inspect" aria-live="polite">指向矩阵查看数值；聚焦后可用方向键移动。</p>
+      </section>
+
+      <details class="method"><summary>这组结果是怎么算出来的？<span aria-hidden="true">+</span></summary><div><p>将初始灯光展成列向量 b，求解 A·x = b（模 2）。每次点击会翻转灯光，重复两次抵消，因此消元用异或代替加减。得到的 x 再按原来的顺序排回 n×n。</p><p>如果存在多组解，程序把自由变量设为 0，给出其中一组可行方案；它不保证点击次数最少。验证会把输出方案实际作用于输入，检查是否全部变为 0。</p></div></details>
+    </main>
+    <footer><span>LIGHTS OUT <span class="footer-dot">·</span> 熄灯矩阵</span><span>离线计算 · 灯光数据仅保留在当前页面</span></footer>
+  </div>
+  <!-- CORE_SCRIPT -->
+  <!-- APP_SCRIPT -->
+</body>
+</html>
