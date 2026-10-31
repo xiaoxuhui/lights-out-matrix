@@ -62,3 +62,22 @@ test('inconsistent trace identifies a real 0=1 row', () => {
   assert.equal(result.solvable, false);
   assert.deepEqual(Array.from(rows[result.contradictionRow]), [...Array(16).fill(0), 1]);
 });
+test('a missing pivot in a middle column does not stop later elimination', () => {
+  const a = [[1, 0, 1], [0, 0, 1], [0, 0, 0]], b = [1, 1, 0];
+  const result = solveGF2(a, b, { recordSteps: true });
+  const freeAt = result.steps.findIndex(step => step.type === 'free' && step.column === 1);
+  assert.ok(freeAt >= 0);
+  assert.ok(result.steps.slice(freeAt + 1).some(step => step.type === 'pivot' && step.column === 2));
+  assert.ok(result.steps.slice(freeAt + 1).some(step => step.type === 'xor' && step.column === 2));
+  assert.equal(result.rank, 2);
+  assert.deepEqual(Array.from(result.solution), [0, 0, 1]);
+  const rows = createAugmentedMatrix(a, b);
+  result.steps.forEach(step => applyEliminationStep(rows, step));
+  assert.deepEqual(plain(rows), [[1, 0, 0, 0], [0, 0, 1, 1], [0, 0, 0, 0]]);
+});
+test('a zero first column still allows pivots in all later columns', () => {
+  const result = solveGF2([[0, 1, 0], [0, 0, 1], [0, 1, 1]], [1, 1, 0], { recordSteps: true });
+  assert.deepEqual(result.steps[0], { type: 'free', column: 0 });
+  assert.deepEqual(result.pivots, [1, 2]);
+  assert.deepEqual(Array.from(result.solution), [0, 1, 1]);
+});

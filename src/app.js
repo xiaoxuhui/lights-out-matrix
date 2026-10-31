@@ -4,6 +4,7 @@
   const $ = id => document.getElementById(id);
   const state = { n: 5, board: null, matrix: null, result: null, cellSize: 18, selectedRow: 0, selectedCol: 0 };
   const inputBoard = $('input-board'), outputBoard = $('output-board'), canvas = $('matrix-canvas');
+  const eliminationViewer = window.createEliminationViewer();
 
   function boardClass(element) {
     element.style.setProperty('--n', state.n);
@@ -69,6 +70,7 @@
     state.result = solveGF2(state.matrix, state.board);
     $('verification').hidden = true;
     updateInput(); updateOutput();
+    eliminationViewer.setInput(state.matrix, state.board);
   }
   function inspect(row, col) {
     const m = state.n ** 2;
@@ -101,6 +103,7 @@
     $('result-panel').hidden = mode === 'matrix' || mode === 'none';
     $('matrix-panel').hidden = mode === 'result' || mode === 'none';
     $('workspace').classList.toggle('result-hidden', $('result-panel').hidden);
+    eliminationViewer.setVisible(mode !== 'none');
     drawMatrix();
   }
   function generate(n) {

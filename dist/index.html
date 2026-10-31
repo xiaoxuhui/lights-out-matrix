@@ -10,6 +10,7 @@
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,select{cursor:pointer}button,input,select,summary,canvas{outline-offset:4px}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,canvas:focus-visible{outline:3px solid #a67928}button{border:1px solid var(--line);background:var(--white);color:var(--ink);border-radius:7px;padding:9px 14px;transition:background .15s}button:hover{background:var(--soft)}button:disabled{cursor:default;opacity:.5}button.primary{background:var(--accent);border-color:var(--accent);color:#fff}button.primary:hover{background:#16432f}button.primary span{margin-left:15px}.shell{max-width:1320px;margin:auto;padding:0 40px}.masthead{height:85px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;gap:12px;align-items:center;color:var(--ink);text-decoration:none;font-size:14px;font-weight:650}.brand-en{font-family:monospace;letter-spacing:1px;font-size:11px;font-weight:400;color:var(--muted)}.brand-mark{display:grid;grid-template-columns:repeat(2,8px);gap:3px}.brand-mark i{height:8px;background:var(--green)}.brand-mark i:last-child{background:var(--red)}.field-tag,.step,.eyebrow{font-family:Consolas,monospace;font-size:11px;letter-spacing:1.5px}.field-tag{border:1px solid #cdd6c7;padding:7px 10px;border-radius:4px;color:#53644f}.intro{display:flex;align-items:center;justify-content:space-between;padding:46px 0 33px}.eyebrow{color:var(--accent);margin:0 0 13px}h1{font-size:42px;letter-spacing:-1.5px;font-weight:650;margin:0 0 13px;line-height:1.2}.subtitle{color:var(--muted);font-size:14px;margin:0;line-height:1.8}.equation{display:flex;align-items:center;gap:15px;font:italic 48px Georgia,serif;padding:0 7px 0 30px}.equation .operator{color:#9fa99b;font-size:34px;font-style:normal}.equation small{align-self:flex-end;font:11px Consolas,monospace;color:var(--muted);margin:0 0 6px -5px}.control-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin-bottom:26px;font-size:13px}#size-form{display:flex;align-items:center;gap:12px}.math{font:italic 22px Georgia,serif}.control-bar .math{font-size:18px;margin-left:5px}input[type=number]{width:66px;padding:9px 10px;border:1px solid #cbd1c4;border-radius:5px;color:var(--ink);background:var(--white)}.muted{color:var(--muted);font-size:12px}.view-control{display:flex;align-items:center;gap:12px}.view-control label{color:var(--muted)}select{padding:9px 32px 9px 12px;border:1px solid #cbd1c4;border-radius:5px;background:var(--white);color:var(--ink)}.form-error{color:#b7352b;width:100%;margin:0}.workspace{display:grid;grid-template-columns:1fr 1fr;gap:24px}.workspace.result-hidden{grid-template-columns:1fr}.workspace.result-hidden .input-panel{max-width:600px;width:100%;justify-self:center}.panel{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:26px;min-width:0}.panel-top{display:flex;align-items:center;justify-content:space-between}.step{color:var(--muted);font-size:10px;letter-spacing:1.2px}h2{margin:9px 0 0;font-size:20px;font-weight:600;letter-spacing:-.4px}h2 .math{color:#8d9b83;margin-left:7px;font-size:24px}.dimension{font:12px Consolas,monospace;color:var(--muted);white-space:nowrap}.panel-description{font-size:12px;color:var(--muted);margin:14px 0 12px;line-height:1.7}.legend{display:flex;align-items:center;gap:16px;font-size:11px;color:#656e61}.legend>span{display:flex;align-items:center;gap:6px}.swatch{height:9px;width:9px;border-radius:2px;display:inline-block;flex-shrink:0}.green{background:var(--green)}.red{background:var(--red)}.board{--n:5;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:clamp(2px,.45vw,6px);width:min(100%,340px);margin:25px auto;aspect-ratio:1}.cell{padding:0;border:0;min-width:0;min-height:0;aspect-ratio:1;border-radius:5px;display:flex;align-items:center;justify-content:center;font:500 15px Consolas,monospace;color:#fff;position:relative;transition:filter .12s,transform .12s}.cell[data-value="0"]{background:var(--red)}.cell[data-value="1"]{background:var(--green)}button.cell:hover{filter:brightness(1.12);transform:scale(.95)}.board.dense .cell{font-size:10px;border-radius:3px}.board.tiny .cell{font-size:0;border-radius:2px}.output-board .cell{font-size:14px}.cell .press-mark{font-size:19px}.board.dense .press-mark{font-size:11px}.board.tiny .press-mark{font-size:0}.board-actions{display:flex;gap:8px;justify-content:center}.board-actions button{padding:8px 15px;font-size:12px}.board-actions button:last-child{margin-left:4px}.board-foot{border-top:1px solid var(--line);padding-top:15px;margin:20px 0 0;display:flex;gap:10px;justify-content:space-between;font-size:10px;color:var(--muted);line-height:1.8}.board-foot>span:first-child{white-space:nowrap}.badge{font-size:11px;background:var(--soft);color:#32603e;border:1px solid #dce6d4;border-radius:20px;padding:5px 10px}.badge.error{background:#fbeee9;color:#af3d33;border-color:#edcec4}.solution-actions{display:flex;align-items:center;justify-content:space-between;gap:10px}.solution-actions p{font-size:13px;margin:0;line-height:1.6}.solution-actions strong{font:24px Georgia,serif;margin:0 4px}.solution-actions button{font-size:12px;white-space:nowrap}.small-note{font-size:11px;color:var(--muted);line-height:1.7;margin:13px 0 0}.verification{font-size:12px;line-height:1.7;background:#edf3e8;border:1px solid #d0dfc7;border-radius:6px;padding:10px 12px;margin-top:13px;color:#32603e}.verification.error{background:#fbeee9;color:#af3d33;border-color:#edcec4}.no-solution{text-align:center;width:min(100%,340px);aspect-ratio:1;margin:25px auto;display:flex;flex-direction:column;justify-content:center;background:#faf1ec;border:1px dashed #e5c4b8;border-radius:8px;padding:20px}.no-solution>span{font:52px Georgia,serif;color:#c27868}.no-solution h3{font-size:17px;margin:18px 0 8px}.no-solution p{font-size:12px;color:#946e61;line-height:1.9;max-width:250px;margin:0 auto}.matrix-panel{margin-top:24px}.matrix-header{display:flex;align-items:center;justify-content:space-between;gap:20px}.matrix-header .dimension{display:inline-block;margin-left:16px;border-left:1px solid var(--line);padding-left:16px}.matrix-tools{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--muted)}input[type=range]{width:100px;accent-color:var(--accent)}.matrix-tools output{min-width:35px;font-family:monospace}.matrix-description{display:flex;gap:15px;justify-content:space-between;align-items:center;margin:15px 0 20px}.matrix-description p{font-size:12px;color:var(--muted);line-height:1.8;margin:0}.matrix-layout{display:grid;grid-template-columns:minmax(0,1fr) 215px;gap:34px}.matrix-scroll{max-height:560px;min-height:150px;overflow:auto;border:1px solid var(--line);border-radius:5px;background:#f2f1e9;padding:15px;display:flex;align-items:flex-start;justify-content:flex-start;scrollbar-color:#c0cab8 #f2f1e9}canvas{display:block;flex-shrink:0;image-rendering:pixelated}.matrix-aside{border-left:1px solid var(--line);padding:4px 0 0 28px}.matrix-aside h3{font-size:23px;font-weight:500;line-height:1.5;margin:15px 0}.matrix-aside p{font-size:12px;line-height:1.9;color:var(--muted);margin-bottom:16px}.matrix-stat{border-top:1px solid var(--line);padding:14px 0;display:flex;flex-direction:column;gap:9px}.matrix-stat span{font-size:11px;color:var(--muted)}.matrix-stat strong{font:18px Consolas,monospace;font-weight:400}.matrix-inspect{font-size:11px;color:var(--muted);margin:15px 0 0;line-height:1.7;min-height:19px}.method{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:32px 0 0;font-size:13px}.method summary{padding:20px 2px;cursor:pointer;list-style:none;display:flex;justify-content:space-between}.method summary span{font-size:19px;color:var(--muted)}.method>div{max-width:900px;color:var(--muted);font-size:12px;line-height:2;padding-bottom:14px}.method[open] summary span{transform:rotate(45deg)}footer{display:flex;gap:16px;justify-content:space-between;padding:25px 0 30px;color:#858b7c;font-size:10px;letter-spacing:.3px}.footer-dot{margin:0 7px}[hidden]{display:none!important}
 @media(min-width:1000px){.input-panel,.result-panel{padding:26px 32px}}@media(max-width:760px){.shell{padding:0 20px}.masthead{height:68px}.brand-en{display:none}.intro{padding:32px 0 26px}.intro h1{font-size:32px}.equation{font-size:33px;gap:8px;padding-left:15px}.equation .operator{font-size:25px}.equation small{font-size:9px}.subtitle{font-size:12px}.control-bar{gap:15px;align-items:flex-start}.view-control{width:100%;justify-content:space-between}.workspace{grid-template-columns:1fr;gap:18px}.panel{padding:22px}.board{width:min(100%,330px)}.matrix-panel{margin-top:18px}.matrix-header{align-items:flex-start;flex-direction:column;gap:16px}.matrix-description{align-items:flex-start}.matrix-description .legend{flex-shrink:0;gap:8px}.matrix-layout{grid-template-columns:1fr;gap:20px}.matrix-scroll{max-height:440px;padding:10px}.matrix-aside{border-left:0;border-top:1px solid var(--line);padding:18px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:0 18px}.matrix-aside .step,.matrix-aside h3,.matrix-aside p{display:none}.matrix-stat{border-top:0;padding:0}.matrix-stat strong{font-size:16px}footer{font-size:9px;flex-wrap:wrap;gap:10px}}@media(max-width:420px){.shell{padding:0 14px}.equation{display:none}.intro h1{font-size:31px}.control-bar #size-form{gap:8px;font-size:12px}#size-form .muted{display:none}.panel{padding:18px}.board-foot{font-size:9px}.matrix-description{flex-direction:column;gap:8px}.board-actions button{padding:8px 13px}.field-tag{font-size:9px;letter-spacing:.5px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
++.trace-panel{margin-top:24px}.trace-summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px}.trace-summary::-webkit-details-marker{display:none}.trace-disclosure{font-size:25px;font-weight:300;color:var(--muted)}.trace-panel:not([open]) .trace-disclosure{font-size:0}.trace-panel:not([open]) .trace-disclosure:after{content:'+';font-size:25px}.trace-body{padding-top:4px}.xor-rule{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 14px;border:1px solid var(--line);border-radius:6px;background:var(--paper);font-size:11px;color:var(--muted)}.xor-rule code{font:12px Consolas,monospace;color:var(--ink);white-space:nowrap}.trace-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:20px 0 10px}.trace-controls button{font-size:12px;padding:8px 12px}.trace-controls output{font:12px Consolas,monospace;color:var(--muted);margin-left:auto}.trace-scrubber{display:flex;align-items:center;gap:12px;font-size:11px;color:var(--muted);margin-bottom:20px}.trace-scrubber input{flex:1;width:100%;min-width:40px}.trace-scrubber span{white-space:nowrap}.trace-stage{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:28px}.trace-stage>div{min-width:0}.trace-matrix-label{display:flex;align-items:center;justify-content:space-between;gap:12px;font:11px Consolas,monospace;color:var(--muted);margin-bottom:10px}.trace-scroll{max-height:530px;padding:9px;background:#faf9f2}.trace-explanation{border-left:1px solid var(--line);padding:28px 0 0 25px;overflow-wrap:anywhere}.trace-explanation h3{font-size:18px;font-weight:600;line-height:1.6;margin:14px 0 10px}.trace-explanation p{font-size:12px;color:var(--muted);line-height:1.95}.trace-constant-note{border-top:1px solid var(--line);padding-top:14px}.trace-explanation #trace-finish{border-top:1px solid var(--line);margin-top:20px;padding-top:5px}.trace-explanation #trace-finish h3{color:var(--accent)}.trace-answer{font-family:Consolas,"Microsoft YaHei",monospace;background:var(--soft);padding:12px;border-radius:5px}.trace-transcript{border-top:1px solid var(--line);margin-top:20px;padding-top:14px}.trace-transcript summary{font-size:12px;cursor:pointer;color:var(--accent);padding:4px 0}.trace-transcript pre{font:12px/1.9 Consolas,"Microsoft YaHei",monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:300px;overflow:auto;padding:15px;background:var(--paper);border-radius:6px}.trace-summary:focus-visible{outline:3px solid #a67928;outline-offset:5px}@media(max-width:900px){.trace-stage{grid-template-columns:1fr}.trace-explanation{border-left:0;border-top:1px solid var(--line);padding:18px 0 0}.trace-explanation h3{margin-top:8px}.trace-matrix-label{flex-wrap:wrap}.trace-controls output{margin-left:0}.trace-scroll{max-height:420px}}@media(max-width:420px){.trace-controls{gap:7px}.trace-controls button{padding:8px 9px;font-size:11px}.xor-rule{gap:9px 12px}.xor-rule>span{width:100%}.trace-summary h2{font-size:18px}.trace-summary .math{font-size:20px}}
 
 </style>
 </head>
@@ -58,8 +59,20 @@
         </section>
       </div>
 
+      <details class="panel trace-panel" id="elimination-panel" open>
+        <summary class="trace-summary"><span><span class="step">03 / GAUSSIAN ELIMINATION</span><h2>高斯消元计算过程 <span class="math">[A | b]</span></h2></span><span class="trace-disclosure" aria-hidden="true">−</span></summary>
+        <div class="trace-body">
+          <p class="panel-description">对增广矩阵同时做行变换。绿色 = 1，红色 = 0；黄色框标出当前主元列和参与运算的行。</p>
+          <div class="xor-rule"><span>模 2 加法就是异或 ⊕</span><code>0 ⊕ 0 = 0</code><code>0 ⊕ 1 = 1</code><code>1 ⊕ 0 = 1</code><code>1 ⊕ 1 = 0</code></div>
+          <div class="trace-controls" aria-label="消元过程控制"><button id="trace-first" type="button">初始矩阵</button><button id="trace-prev" type="button">← 上一步</button><button id="trace-next" class="primary" type="button">下一步 →</button><button id="trace-last" type="button">最后一步</button><button id="trace-play" type="button" aria-pressed="false">自动播放</button><output id="trace-progress" aria-live="polite">第 0 步</output></div>
+          <label class="trace-scrubber" for="trace-position"><span>步骤进度</span><input id="trace-position" type="range" min="0" max="0" value="0"><span id="trace-total">0 步</span></label>
+          <div class="trace-stage"><div><div class="trace-matrix-label"><span id="trace-size">增广矩阵</span><div class="matrix-tools"><label for="trace-zoom">放大</label><input id="trace-zoom" type="range" min="1" max="28" value="22"><output id="trace-zoom-label">22 px</output></div></div><div class="matrix-scroll trace-scroll" id="trace-scroll"><canvas id="trace-canvas" tabindex="0" role="img" aria-label="高斯消元增广矩阵" aria-describedby="trace-cell-value"></canvas></div><p id="trace-cell-value" class="matrix-inspect" aria-live="polite">指向单元格查看数值，或聚焦后使用方向键。</p></div><aside class="trace-explanation"><span class="step">CURRENT STEP</span><h3 id="trace-step-title">初始增广矩阵</h3><p id="trace-step-description"></p><p class="trace-constant-note">竖线右侧是常数列 b，换行和异或时也要一起变化。</p><div id="trace-finish" hidden><h3 id="trace-conclusion-title"></h3><p id="trace-conclusion"></p><p id="trace-answer" class="trace-answer"></p></div></aside></div>
+          <details id="trace-transcript" class="trace-transcript"><summary>查看完整文字步骤</summary><pre id="trace-text"></pre></details>
+        </div>
+      </details>
+
       <section class="panel matrix-panel" id="matrix-panel" aria-labelledby="matrix-title">
-        <div class="matrix-header"><div><span class="step">03 / OPERATION MATRIX</span><h2 id="matrix-title">操作矩阵 <span class="math">A</span><span class="dimension" id="matrix-dimension">25 × 25</span></h2></div><div class="matrix-tools"><label for="zoom">格子大小</label><input id="zoom" type="range" min="1" max="28" value="18"><output id="zoom-label" for="zoom">18 px</output></div></div>
+        <div class="matrix-header"><div><span class="step">04 / OPERATION MATRIX</span><h2 id="matrix-title">操作矩阵 <span class="math">A</span><span class="dimension" id="matrix-dimension">25 × 25</span></h2></div><div class="matrix-tools"><label for="zoom">格子大小</label><input id="zoom" type="range" min="1" max="28" value="18"><output id="zoom-label" for="zoom">18 px</output></div></div>
         <div class="matrix-description"><p>列 = 点击的格子 j；行 = 受影响的格子 i。绿色表示会翻转，红色表示不影响。</p><div class="legend"><span><i class="swatch green"></i>1</span><span><i class="swatch red"></i>0</span></div></div>
         <div class="matrix-layout"><div class="matrix-scroll" id="matrix-scroll"><canvas id="matrix-canvas" tabindex="0" role="img" aria-label="操作矩阵；可用方向键查询单元格" aria-describedby="matrix-inspect"></canvas></div><aside class="matrix-aside"><span class="step">READ THE MATRIX</span><h3>一次点击，<br>对应一列。</h3><p>按从左到右、从上到下的顺序给棋盘格编号 1 到 n²。</p><p>每个格子影响自身及相邻格，所以每列最多有 5 个 1。</p><div class="matrix-stat"><span>矩阵大小</span><strong id="matrix-stat-size">25 × 25</strong></div><div class="matrix-stat"><span>秩 / 自由变量</span><strong id="rank-stat">—</strong></div></aside></div>
         <p id="matrix-inspect" class="matrix-inspect" aria-live="polite">指向矩阵查看数值；聚焦后可用方向键移动。</p>
@@ -101,7 +114,7 @@
     }
     return matrix;
   }
-  function solveGF2(matrix, board) {
+  function solveGF2(matrix, board, options = {}) {
     const m = matrix.length;
     if (!m || matrix.some(row => row.length !== m)) throw new RangeError('系数矩阵必须是非空方阵。');
     validateBits(board, m);
@@ -115,27 +128,46 @@
     });
     const bit = (row, column) => row[column >>> 5] >>> (column & 31) & 1;
     const pivots = [];
+    const steps = options.recordSteps ? [] : null;
     let rank = 0;
     for (let col = 0; col < m && rank < m; col++) {
       let pivot = rank;
       while (pivot < m && !bit(rows[pivot], col)) pivot++;
-      if (pivot === m) continue;
+      if (pivot === m) {
+        if (steps) steps.push({ type: 'free', column: col });
+        continue;
+      }
+      if (steps && pivot !== rank) steps.push({ type: 'swap', source: pivot, target: rank, column: col });
       [rows[rank], rows[pivot]] = [rows[pivot], rows[rank]];
+      if (steps) steps.push({ type: 'pivot', row: rank, column: col });
       for (let row = 0; row < m; row++) {
         if (row !== rank && bit(rows[row], col)) {
+          if (steps) steps.push({ type: 'xor', source: rank, target: row, column: col });
           for (let w = col >>> 5; w < words; w++) rows[row][w] ^= rows[rank][w];
         }
       }
       pivots.push(col);
       rank++;
     }
-    const metadata = { rank, nullity: m - rank };
+    const metadata = { rank, nullity: m - rank, pivots, ...(steps ? { steps } : {}) };
     for (let row = rank; row < m; row++) {
-      if (bit(rows[row], m)) return { ...metadata, solvable: false, solution: null };
+      if (bit(rows[row], m)) return { ...metadata, solvable: false, solution: null, contradictionRow: row };
     }
     const solution = new Uint8Array(m); // Free variables are chosen as zero.
     pivots.forEach((column, row) => { solution[column] = bit(rows[row], m); });
     return { ...metadata, solvable: true, solution };
+  }
+  function createAugmentedMatrix(matrix, board) {
+    validateBits(board, matrix.length);
+    return matrix.map((row, i) => Uint8Array.from([...row, board[i]]));
+  }
+  function applyEliminationStep(rows, step) {
+    if (step.type === 'swap') {
+      [rows[step.source], rows[step.target]] = [rows[step.target], rows[step.source]];
+    } else if (step.type === 'xor') {
+      for (let col = 0; col < rows[step.target].length; col++) rows[step.target][col] ^= rows[step.source][col];
+    }
+    return rows;
   }
   function solveLights(value, board) {
     const n = validateSize(value);
@@ -151,10 +183,200 @@
     }
     return result;
   }
-  const api = { MAX_SIZE, validateSize, createOperationMatrix, solveGF2, solveLights, applyClicks };
+  const api = { MAX_SIZE, validateSize, createOperationMatrix, solveGF2, solveLights, applyClicks, createAugmentedMatrix, applyEliminationStep };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.LightsCore = api;
 })(typeof globalThis === 'undefined' ? this : globalThis);
+
+</script>
+  <script>
+(function () {
+  'use strict';
+  const { solveGF2, createAugmentedMatrix, applyEliminationStep } = window.LightsCore;
+  window.createEliminationViewer = function () {
+    const $ = id => document.getElementById(id);
+    const panel = $('elimination-panel'), canvas = $('trace-canvas');
+    let matrix, board, result, rows, cursor = 0, cell = 22, timer = null, selectedRow = 0, selectedCol = 0;
+    function pause() {
+      clearInterval(timer); timer = null;
+      $('trace-play').textContent = '自动播放'; $('trace-play').setAttribute('aria-pressed', 'false');
+    }
+    function describe(step) {
+      if (step.type === 'swap') return {
+        title: `R${step.target + 1} ↔ R${step.source + 1}`,
+        description: `第 ${step.column + 1} 列需要一个值为 1 的主元。交换第 ${step.target + 1} 行和第 ${step.source + 1} 行，整行连同常数列一起交换。`
+      };
+      if (step.type === 'pivot') return {
+        title: `选主元：第 ${step.row + 1} 行，第 ${step.column + 1} 列`,
+        description: `这个位置的数值为 1。以 R${step.row + 1} 为主元行，将这一列其他行的 1 消成 0。模 2 下不需要除法。`
+      };
+      if (step.type === 'free') return {
+        title: `第 ${step.column + 1} 列无新主元，跳过本列`,
+        description: `尚未使用的行在这一列都是 0。${step.column + 1 < board.length ? '这不代表消元结束：保持当前主元行位置，继续检查右边的列。' : '本列已是最后一个系数列，所有列检查完毕后再判定方程组。'}x${step.column + 1} 是自由变量；有解时本页选取它为 0。`
+      };
+      return {
+        title: `R${step.target + 1} ← R${step.target + 1} ⊕ R${step.source + 1}`,
+        description: `把第 ${step.source + 1} 行逐项异或到第 ${step.target + 1} 行，包含常数列。第 ${step.column + 1} 列原来的 1 变为 1 ⊕ 1 = 0，完成一次消去。`
+      };
+    }
+    function conclusion() {
+      if (!result.solvable) return {
+        title: '出现 0 = 1，因此无解',
+        text: `第 ${result.contradictionRow + 1} 行的所有系数都为 0，但常数项为 1。这是矛盾方程，当前初始灯光无法全部熄灭。`, answer: ''
+      };
+      const free = Array.from({ length: board.length }, (_, i) => i).filter(i => !result.pivots.includes(i));
+      const explanation = free.length
+        ? `有 ${free.length} 个自由变量：${free.map(i => `x${i + 1}`).join('、')}。将它们取为 0 后，每个主元变量等于对应行最右侧的常数项。`
+        : '每个变量都有主元，左侧已化为单位矩阵。最右侧的常数列就是唯一的解 x。';
+      return { title: free.length ? '消元完成，读取一组可行解' : '消元完成，读取唯一解', text: explanation,
+        answer: `x = (${Array.from(result.solution).join(', ')})。按从左到右、从上到下排回棋盘；1 按一次，0 不按。` };
+    }
+    function inspect(row, col) {
+      if (!rows) return;
+      selectedRow = Math.max(0, Math.min(rows.length - 1, row));
+      selectedCol = Math.max(0, Math.min(rows.length, col));
+      const isConstant = selectedCol === rows.length;
+      $('trace-cell-value').textContent = `第 ${selectedRow + 1} 行，${isConstant ? '常数列' : `第 ${selectedCol + 1} 列`}：${rows[selectedRow][selectedCol]}${isConstant ? '（右侧 b）' : ''}。`;
+    }
+    function geometry() {
+      return { left: cell >= 12 ? 42 : 8, top: cell >= 12 ? 29 : 16, divider: cell >= 6 ? 7 : 3 };
+    }
+    function draw() {
+      const m = rows.length, { left, top, divider } = geometry();
+      const xAt = col => left + col * cell + (col === m ? divider : 0);
+      canvas.width = left + (m + 1) * cell + divider + 4; canvas.height = top + m * cell + 4;
+      const ctx = canvas.getContext('2d', { alpha: false });
+      ctx.fillStyle = '#fffef9'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      const gap = cell >= 6 ? 1 : 0;
+      for (let r = 0; r < m; r++) for (let c = 0; c <= m; c++) {
+        ctx.fillStyle = rows[r][c] ? '#288b57' : '#d45147';
+        ctx.fillRect(xAt(c), top + r * cell, cell - gap, cell - gap);
+        if (cell >= 14) {
+          ctx.fillStyle = '#fff'; ctx.font = `${Math.floor(cell * .57)}px Consolas,monospace`;
+          ctx.fillText(rows[r][c], xAt(c) + cell / 2 - .5, top + (r + .5) * cell);
+        }
+      }
+      ctx.fillStyle = '#737b71'; ctx.font = '10px Consolas,monospace';
+      if (cell >= 14) {
+        for (let c = 0; c < m; c++) ctx.fillText(`x${c + 1}`, xAt(c) + cell / 2, 12);
+        for (let r = 0; r < m; r++) ctx.fillText(`R${r + 1}`, left / 2 - 2, top + (r + .5) * cell);
+      }
+      ctx.fillText('b', xAt(m) + cell / 2, cell >= 12 ? 12 : 7);
+      ctx.fillStyle = '#23362f'; ctx.fillRect(left + m * cell + Math.floor(divider / 2) - 1, top - 2, 2, m * cell + 2);
+      const step = cursor ? result.steps[cursor - 1] : null;
+      if (step) {
+        ctx.strokeStyle = '#e5b32d'; ctx.lineWidth = 2;
+        ctx.strokeRect(xAt(step.column) + .5, top + .5, Math.max(1, cell - 2), Math.max(1, m * cell - 2));
+        const activeRows = step.type === 'pivot' ? [step.row] : step.type === 'free' ? [] : [step.source, step.target];
+        for (const r of activeRows) ctx.strokeRect(left + .5, top + r * cell + .5, (m + 1) * cell + divider - 2, Math.max(1, cell - 2));
+      }
+      if (cursor === result.steps.length && !result.solvable) {
+        ctx.strokeStyle = '#23362f'; ctx.lineWidth = 3;
+        ctx.strokeRect(left, top + result.contradictionRow * cell, (m + 1) * cell + divider, cell);
+      }
+      canvas.setAttribute('aria-label', `${m} 行 ${m + 1} 列的增广矩阵，第 ${cursor} 步；绿色 1，红色 0，最后一列为常数列`);
+    }
+    function render() {
+      if (!result || !panel.open || panel.hidden) return;
+      const total = result.steps.length, end = cursor === total;
+      const current = cursor ? describe(result.steps[cursor - 1]) : {
+        title: '初始增广矩阵 [A | b]',
+        description: `左侧 ${board.length} 列是操作矩阵 A，右侧是初始灯光 b。每一行表示一个格子的熄灯方程，现在开始逐列选取主元。`
+      };
+      $('trace-step-title').textContent = current.title;
+      $('trace-step-description').textContent = current.description;
+      $('trace-progress').textContent = `第 ${cursor} / ${total} 步`;
+      $('trace-position').value = cursor;
+      $('trace-first').disabled = cursor === 0; $('trace-prev').disabled = cursor === 0;
+      $('trace-next').disabled = end; $('trace-last').disabled = end; $('trace-play').disabled = end;
+      $('trace-finish').hidden = !end;
+      if (end) {
+        const finish = conclusion();
+        $('trace-conclusion-title').textContent = finish.title;
+        $('trace-conclusion').textContent = finish.text; $('trace-answer').textContent = finish.answer;
+      }
+      draw();
+    }
+    function ensureTrace() {
+      if (result || !matrix || panel.hidden || !panel.open) return;
+      result = solveGF2(matrix, board, { recordSteps: true });
+      rows = createAugmentedMatrix(matrix, board); cursor = 0;
+      $('trace-position').max = result.steps.length;
+      $('trace-total').textContent = `${result.steps.length} 步`;
+      $('trace-size').textContent = `[A | b] · ${board.length} × ${board.length + 1}`;
+      render();
+    }
+    function seek(position) {
+      ensureTrace();
+      if (!result) return;
+      const next = Math.max(0, Math.min(result.steps.length, position));
+      while (cursor < next) applyEliminationStep(rows, result.steps[cursor++]);
+      while (cursor > next) applyEliminationStep(rows, result.steps[--cursor]);
+      if (cursor === result.steps.length) pause();
+      render();
+    }
+    $('trace-first').addEventListener('click', () => { pause(); seek(0); });
+    $('trace-prev').addEventListener('click', () => { pause(); seek(cursor - 1); });
+    $('trace-next').addEventListener('click', () => { pause(); seek(cursor + 1); });
+    $('trace-last').addEventListener('click', () => { pause(); ensureTrace(); seek(result.steps.length); });
+    $('trace-position').addEventListener('input', () => { pause(); seek(Number($('trace-position').value)); });
+    $('trace-play').addEventListener('click', () => {
+      if (timer) { pause(); return; }
+      ensureTrace();
+      if (!result || cursor === result.steps.length) return;
+      $('trace-play').textContent = '暂停'; $('trace-play').setAttribute('aria-pressed', 'true');
+      timer = setInterval(() => seek(cursor + 1), 650);
+    });
+    $('trace-zoom').addEventListener('input', () => {
+      cell = Number($('trace-zoom').value); $('trace-zoom-label').textContent = `${cell} px`; render();
+    });
+    panel.addEventListener('toggle', () => { if (panel.open) { ensureTrace(); render(); } else pause(); });
+    $('trace-transcript').addEventListener('toggle', () => {
+      if (!$('trace-transcript').open || !result) return;
+      const lines = ['求解 A·x=b（模 2）。初始增广矩阵 [A | b]。', '异或规则：0⊕0=0；0⊕1=1；1⊕0=1；1⊕1=0。', ''];
+      result.steps.forEach((step, i) => {
+        const description = describe(step); lines.push(`${i + 1}. ${description.title}\n   ${description.description}`);
+      });
+      const finish = conclusion();
+      lines.push('', finish.title, finish.text, finish.answer);
+      $('trace-text').textContent = lines.join('\n');
+    });
+    canvas.addEventListener('pointermove', event => {
+      if (!rows) return;
+      const rect = canvas.getBoundingClientRect(), { left, top, divider } = geometry();
+      const x = event.clientX - rect.left - left, y = event.clientY - rect.top - top;
+      if (x < 0 || y < 0) return;
+      inspect(Math.floor(y / cell), x >= rows.length * cell ? rows.length : Math.floor(x / cell));
+    });
+    canvas.addEventListener('focus', () => inspect(selectedRow, selectedCol));
+    canvas.addEventListener('keydown', event => {
+      if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+      event.preventDefault();
+      inspect(selectedRow + (event.key === 'ArrowDown' ? 1 : event.key === 'ArrowUp' ? -1 : 0), selectedCol + (event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0));
+      const { left, top, divider } = geometry(), holder = $('trace-scroll');
+      const x = left + selectedCol * cell + (selectedCol === rows.length ? divider : 0), y = top + selectedRow * cell;
+      if (x < holder.scrollLeft || x + cell > holder.scrollLeft + holder.clientWidth - 30) holder.scrollLeft = x;
+      if (y < holder.scrollTop || y + cell > holder.scrollTop + holder.clientHeight - 30) holder.scrollTop = y;
+    });
+    return {
+      setInput(newMatrix, newBoard) {
+        pause(); matrix = newMatrix; board = Uint8Array.from(newBoard); result = null; rows = null; cursor = 0;
+        selectedRow = 0; selectedCol = 0;
+        cell = Math.max(1, Math.min(22, Math.floor(640 / (board.length + 1))));
+        $('trace-zoom').max = Math.min(28, Math.floor(4020 / (board.length + 1)));
+        $('trace-zoom').value = cell; $('trace-zoom-label').textContent = `${cell} px`;
+        $('trace-transcript').open = false; $('trace-text').textContent = '';
+        $('trace-cell-value').textContent = '指向单元格查看数值，或聚焦后使用方向键。';
+        ensureTrace();
+      },
+      setVisible(visible) {
+        panel.hidden = !visible;
+        if (visible) { ensureTrace(); render(); } else pause();
+      }
+    };
+  };
+})();
 
 </script>
   <script>
@@ -164,6 +386,7 @@
   const $ = id => document.getElementById(id);
   const state = { n: 5, board: null, matrix: null, result: null, cellSize: 18, selectedRow: 0, selectedCol: 0 };
   const inputBoard = $('input-board'), outputBoard = $('output-board'), canvas = $('matrix-canvas');
+  const eliminationViewer = window.createEliminationViewer();
 
   function boardClass(element) {
     element.style.setProperty('--n', state.n);
@@ -229,6 +452,7 @@
     state.result = solveGF2(state.matrix, state.board);
     $('verification').hidden = true;
     updateInput(); updateOutput();
+    eliminationViewer.setInput(state.matrix, state.board);
   }
   function inspect(row, col) {
     const m = state.n ** 2;
@@ -261,6 +485,7 @@
     $('result-panel').hidden = mode === 'matrix' || mode === 'none';
     $('matrix-panel').hidden = mode === 'result' || mode === 'none';
     $('workspace').classList.toggle('result-hidden', $('result-panel').hidden);
+    eliminationViewer.setVisible(mode !== 'none');
     drawMatrix();
   }
   function generate(n) {

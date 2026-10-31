@@ -52,8 +52,20 @@
         </section>
       </div>
 
+      <details class="panel trace-panel" id="elimination-panel" open>
+        <summary class="trace-summary"><span><span class="step">03 / GAUSSIAN ELIMINATION</span><h2>高斯消元计算过程 <span class="math">[A | b]</span></h2></span><span class="trace-disclosure" aria-hidden="true">−</span></summary>
+        <div class="trace-body">
+          <p class="panel-description">对增广矩阵同时做行变换。绿色 = 1，红色 = 0；黄色框标出当前主元列和参与运算的行。</p>
+          <div class="xor-rule"><span>模 2 加法就是异或 ⊕</span><code>0 ⊕ 0 = 0</code><code>0 ⊕ 1 = 1</code><code>1 ⊕ 0 = 1</code><code>1 ⊕ 1 = 0</code></div>
+          <div class="trace-controls" aria-label="消元过程控制"><button id="trace-first" type="button">初始矩阵</button><button id="trace-prev" type="button">← 上一步</button><button id="trace-next" class="primary" type="button">下一步 →</button><button id="trace-last" type="button">最后一步</button><button id="trace-play" type="button" aria-pressed="false">自动播放</button><output id="trace-progress" aria-live="polite">第 0 步</output></div>
+          <label class="trace-scrubber" for="trace-position"><span>步骤进度</span><input id="trace-position" type="range" min="0" max="0" value="0"><span id="trace-total">0 步</span></label>
+          <div class="trace-stage"><div><div class="trace-matrix-label"><span id="trace-size">增广矩阵</span><div class="matrix-tools"><label for="trace-zoom">放大</label><input id="trace-zoom" type="range" min="1" max="28" value="22"><output id="trace-zoom-label">22 px</output></div></div><div class="matrix-scroll trace-scroll" id="trace-scroll"><canvas id="trace-canvas" tabindex="0" role="img" aria-label="高斯消元增广矩阵" aria-describedby="trace-cell-value"></canvas></div><p id="trace-cell-value" class="matrix-inspect" aria-live="polite">指向单元格查看数值，或聚焦后使用方向键。</p></div><aside class="trace-explanation"><span class="step">CURRENT STEP</span><h3 id="trace-step-title">初始增广矩阵</h3><p id="trace-step-description"></p><p class="trace-constant-note">竖线右侧是常数列 b，换行和异或时也要一起变化。</p><div id="trace-finish" hidden><h3 id="trace-conclusion-title"></h3><p id="trace-conclusion"></p><p id="trace-answer" class="trace-answer"></p></div></aside></div>
+          <details id="trace-transcript" class="trace-transcript"><summary>查看完整文字步骤</summary><pre id="trace-text"></pre></details>
+        </div>
+      </details>
+
       <section class="panel matrix-panel" id="matrix-panel" aria-labelledby="matrix-title">
-        <div class="matrix-header"><div><span class="step">03 / OPERATION MATRIX</span><h2 id="matrix-title">操作矩阵 <span class="math">A</span><span class="dimension" id="matrix-dimension">25 × 25</span></h2></div><div class="matrix-tools"><label for="zoom">格子大小</label><input id="zoom" type="range" min="1" max="28" value="18"><output id="zoom-label" for="zoom">18 px</output></div></div>
+        <div class="matrix-header"><div><span class="step">04 / OPERATION MATRIX</span><h2 id="matrix-title">操作矩阵 <span class="math">A</span><span class="dimension" id="matrix-dimension">25 × 25</span></h2></div><div class="matrix-tools"><label for="zoom">格子大小</label><input id="zoom" type="range" min="1" max="28" value="18"><output id="zoom-label" for="zoom">18 px</output></div></div>
         <div class="matrix-description"><p>列 = 点击的格子 j；行 = 受影响的格子 i。绿色表示会翻转，红色表示不影响。</p><div class="legend"><span><i class="swatch green"></i>1</span><span><i class="swatch red"></i>0</span></div></div>
         <div class="matrix-layout"><div class="matrix-scroll" id="matrix-scroll"><canvas id="matrix-canvas" tabindex="0" role="img" aria-label="操作矩阵；可用方向键查询单元格" aria-describedby="matrix-inspect"></canvas></div><aside class="matrix-aside"><span class="step">READ THE MATRIX</span><h3>一次点击，<br>对应一列。</h3><p>按从左到右、从上到下的顺序给棋盘格编号 1 到 n²。</p><p>每个格子影响自身及相邻格，所以每列最多有 5 个 1。</p><div class="matrix-stat"><span>矩阵大小</span><strong id="matrix-stat-size">25 × 25</strong></div><div class="matrix-stat"><span>秩 / 自由变量</span><strong id="rank-stat">—</strong></div></aside></div>
         <p id="matrix-inspect" class="matrix-inspect" aria-live="polite">指向矩阵查看数值；聚焦后可用方向键移动。</p>
@@ -64,6 +76,7 @@
     <footer><span>LIGHTS OUT <span class="footer-dot">·</span> 熄灯矩阵</span><span>离线计算 · 灯光数据仅保留在当前页面</span></footer>
   </div>
   <!-- CORE_SCRIPT -->
+  <!-- ELIMINATION_SCRIPT -->
   <!-- APP_SCRIPT -->
 </body>
 </html>
