@@ -2,6 +2,7 @@
   "name": "lights-out-matrix",
   "version": "1.0.0",
   "private": true,
+  "repository": "https://github.com/xiaoxuhui/lights-out-matrix",
   "scripts": {
     "test": "node --test tests/*.test.cjs",
     "build": "node scripts/build.mjs",
