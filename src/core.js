@@ -29,7 +29,7 @@
     }
     return matrix;
   }
-  function solveGF2(matrix, board) {
+  function solveGF2(matrix, board, options = {}) {
     const m = matrix.length;
     if (!m || matrix.some(row => row.length !== m)) throw new RangeError('系数矩阵必须是非空方阵。');
     validateBits(board, m);
@@ -43,27 +43,46 @@
     });
     const bit = (row, column) => row[column >>> 5] >>> (column & 31) & 1;
     const pivots = [];
+    const steps = options.recordSteps ? [] : null;
     let rank = 0;
     for (let col = 0; col < m && rank < m; col++) {
       let pivot = rank;
       while (pivot < m && !bit(rows[pivot], col)) pivot++;
-      if (pivot === m) continue;
+      if (pivot === m) {
+        if (steps) steps.push({ type: 'free', column: col });
+        continue;
+      }
+      if (steps && pivot !== rank) steps.push({ type: 'swap', source: pivot, target: rank, column: col });
       [rows[rank], rows[pivot]] = [rows[pivot], rows[rank]];
+      if (steps) steps.push({ type: 'pivot', row: rank, column: col });
       for (let row = 0; row < m; row++) {
         if (row !== rank && bit(rows[row], col)) {
+          if (steps) steps.push({ type: 'xor', source: rank, target: row, column: col });
           for (let w = col >>> 5; w < words; w++) rows[row][w] ^= rows[rank][w];
         }
       }
       pivots.push(col);
       rank++;
     }
-    const metadata = { rank, nullity: m - rank };
+    const metadata = { rank, nullity: m - rank, pivots, ...(steps ? { steps } : {}) };
     for (let row = rank; row < m; row++) {
-      if (bit(rows[row], m)) return { ...metadata, solvable: false, solution: null };
+      if (bit(rows[row], m)) return { ...metadata, solvable: false, solution: null, contradictionRow: row };
     }
     const solution = new Uint8Array(m); // Free variables are chosen as zero.
     pivots.forEach((column, row) => { solution[column] = bit(rows[row], m); });
     return { ...metadata, solvable: true, solution };
+  }
+  function createAugmentedMatrix(matrix, board) {
+    validateBits(board, matrix.length);
+    return matrix.map((row, i) => Uint8Array.from([...row, board[i]]));
+  }
+  function applyEliminationStep(rows, step) {
+    if (step.type === 'swap') {
+      [rows[step.source], rows[step.target]] = [rows[step.target], rows[step.source]];
+    } else if (step.type === 'xor') {
+      for (let col = 0; col < rows[step.target].length; col++) rows[step.target][col] ^= rows[step.source][col];
+    }
+    return rows;
   }
   function solveLights(value, board) {
     const n = validateSize(value);
@@ -79,7 +98,7 @@
     }
     return result;
   }
-  const api = { MAX_SIZE, validateSize, createOperationMatrix, solveGF2, solveLights, applyClicks };
+  const api = { MAX_SIZE, validateSize, createOperationMatrix, solveGF2, solveLights, applyClicks, createAugmentedMatrix, applyEliminationStep };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.LightsCore = api;
 })(typeof globalThis === 'undefined' ? this : globalThis);
